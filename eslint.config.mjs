@@ -20,6 +20,14 @@ const eslintConfig = [
       "next-env.d.ts",
     ],
   },
+  {
+    files: ['**/*.{js,jsx,ts,tsx}'],
+    rules: {
+      indent: ['warn', 2], // 2 spaces, warning level
+      'no-extra-semi': 'warn', // Warn on unnecessary semicolons
+    },
+  }
+  
 ];
 
 export default eslintConfig;
