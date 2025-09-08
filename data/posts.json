@@ -1,0 +1,12 @@
+[
+  {
+    "slug": "client-server-synergy",
+    "title": "An App That's the Best of Both Worlds",
+    "excerpt": "This application demonstrates the power of modern web frameworks by seamlessly blending server-side rendering and client-side interactivity. We use Server Components for fast, secure data fetching and Client Components for a rich, responsive user experience."
+  },
+  {
+    "slug": "interactive-features",
+    "title": "How Comments and Likes Work",
+    "excerpt": "Explore two different approaches to interactivity. The comment feature uses a Server Action, allowing the form to directly call a secure function on the server. The likes button, however, uses a traditional client-side API call to update the count without a full page refresh."
+  }
+]

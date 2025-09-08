@@ -1,5 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import React from "react";
+import IndicatorIcon from "../components/IndicatorIcon";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -20,6 +22,26 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
+          <div className="legend">
+          <span className="legend-item client">
+            <span className="legend-label">Client-only</span>
+            <IndicatorIcon
+                type="client"
+                name="Client"
+                size={18}
+                className="legend-icon"
+            />
+          </span>
+              <span className="legend-item server">
+            <span className="legend-label">Server-only</span>
+            <IndicatorIcon
+                type="server"
+                name="Server"
+                size={18}
+                className="legend-icon"
+            />
+          </span>
+          </div>
         {children}
       </body>
     </html>
