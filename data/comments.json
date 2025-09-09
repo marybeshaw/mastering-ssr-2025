@@ -2,35 +2,25 @@
   "client-server-synergy": {
     "c1a2b3d4-e5f6-4a7b-8c9d-1e1f2a3b4c5d": {
       "author": "DevRel Dana",
-      "message": "This is such a clear explanation of how Server and Client Components work together. Great job breaking down a complex topic!",
+      "commentText": "This is such a clear explanation of how Server and Client Components work together. Great job breaking down a complex topic!",
       "timestamp": "2025-09-07T20:15:00.000Z"
     },
     "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d": {
       "author": "Fullstack Frank",
-      "message": "I appreciate the practical examples provided here. It really helps to see how these concepts can be applied in real-world scenarios.",
+      "commentText": "I appreciate the practical examples provided here. It really helps to see how these concepts can be applied in real-world scenarios.",
       "timestamp": "2025-09-07T20:30:00.000Z"
     },
-    "1757351844202-gue7d3l03": {
-      "author": "Mary E Shaw",
-      "message": "Love this app!",
-      "timestamp": "2025-09-08T17:17:24.202Z"
-    },
-    "1757354944735-g7kkxz3i8": {
-      "author": "Mary E Shaw",
-      "message": "adding a comment...",
-      "timestamp": "2025-09-08T18:09:04.735Z"
-    }
   },
   "interactive-features": {
     "d4c3b2a1-f6e5-4f7e-8d9c-2e1f2a3b4c5d": {
       "author": "API Alex",
-      "message": "The distinction between Server Actions and client-side API calls is crucial. Thanks for highlighting the different use cases!",
+      "commentText": "The distinction between Server Actions and client-side API calls is crucial. Thanks for highlighting the different use cases!",
       "timestamp": "2025-09-07T21:05:00.000Z"
     },
     "e5f6g7h8-i9j0-4k1l-8m2n-3e1f2a3b4c5d": {
       "author": "Frontend Frida",
-      "message": "Love seeing practical examples like this. It really helps to understand when to choose one pattern over the other.",
+      "commentText": "Love seeing practical examples like this. It really helps to understand when to choose one pattern over the other.",
       "timestamp": "2025-09-07T21:20:00.000Z"
-    }
+    },
   }
 }
