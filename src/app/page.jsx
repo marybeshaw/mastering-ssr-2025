@@ -5,7 +5,7 @@ import IndicatorIcon from "../components/IndicatorIcon";
 import BlogPost from "../components/BlogPost";
 
 
-const COMPONENT_TYPE = "client";
+const COMPONENT_TYPE = "hybrid";
 export default async function HomePage() {
   const posts = await getPosts();
 

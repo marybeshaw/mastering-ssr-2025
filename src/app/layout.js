@@ -37,11 +37,11 @@ export default function RootLayout({ children }) {
               className="legend-icon"
             />
           </span>
-          <span className="legend-item server">
-            <span className="legend-label">Server-only</span>
+          <span className="legend-item hybrid">
+            <span className="legend-label">Server And Client</span>
             <IndicatorIcon
-              type="server"
-              name="Server"
+              type="hybrid"
+              name="Server And Client"
               size={18}
               className="legend-icon"
             />

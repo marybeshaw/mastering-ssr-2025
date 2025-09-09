@@ -21,18 +21,17 @@ async function saveLikes(likes) {
 }
 
 export async function GET(request, { params }) {
-  const { postId } = params;
+  const { postId } = await params;
   const likes = await getLikes();
   const postLikes = likes[postId] || 0;
   return NextResponse.json({ likes: postLikes });
 }
 
 export async function POST(request, { params }) {
-  const { postId } = params;
+  const { postId } = await params;
   const likes = await getLikes();
   const postLikes = (likes[postId] || 0) + 1;
   likes[postId] = postLikes;
   await saveLikes(likes);
   return NextResponse.json({ likes: postLikes });
 }
-

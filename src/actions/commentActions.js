@@ -6,17 +6,26 @@ import { revalidatePath } from 'next/cache';
 export async function addCommentAction(prevState, formData) {
   const postId = formData.get('postId');
   const author = formData.get('author');
-  const message = formData.get('message');
+  const commentText = formData.get('commentText');
 
-  if (!author || !message) {
-    return { message: 'Author and message are required' };
+  if (!author || !commentText) {
+    return {
+      status: 'error',
+      message: 'Author and comment are required'
+    };
   }
 
   try {
-    await addComment(postId, { author, message });
+    await addComment(postId, { author, commentText });
     revalidatePath(`/blog/${postId}`);
-    return { message: 'Comment added successfully' };
+    return {
+      status: 'completed',
+      message: 'Comment added successfully'
+    };
   } catch (error) {
-    return { message: 'Error adding comment' };
+    return {
+      status: 'error',
+      message: 'Error adding comment'
+    };
   }
 }

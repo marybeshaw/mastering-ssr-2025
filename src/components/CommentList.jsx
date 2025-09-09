@@ -3,7 +3,7 @@ import IndicatorIcon from './IndicatorIcon';
 import CommentForm from './CommentForm';
 import { getComments } from '../lib/comments';
 
-const COMPONENT_TYPE = 'server';
+const COMPONENT_TYPE = 'hybrid';
 
 export default async function CommentList({ postId }) {
   const comments = await getComments(postId);
@@ -17,7 +17,7 @@ export default async function CommentList({ postId }) {
         <ul>
           {comments.map((comment) => (
             <li key={comment.id}>
-              <strong>{comment.author}</strong>: {comment.message}
+              <strong>{comment.author}</strong>: {comment.commentText}
               <br />
               <small>{new Date(comment.timestamp).toLocaleString()}</small>
             </li>
