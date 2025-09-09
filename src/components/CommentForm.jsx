@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useActionState, useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { addCommentAction } from '../actions/commentActions';
 import IndicatorIcon from './IndicatorIcon';
 
@@ -63,3 +64,7 @@ export default function CommentForm({ postId }) {
     </div>
   );
 }
+
+CommentForm.propTypes = {
+  postId: PropTypes.string.isRequired,
+};

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import IndicatorIcon from './IndicatorIcon';
 import CommentForm from './CommentForm';
 import { getComments } from '../lib/comments';
@@ -28,3 +29,7 @@ export default async function CommentList({ postId }) {
     </div>
   );
 }
+
+CommentList.propTypes = {
+  postId: PropTypes.string.isRequired,
+};

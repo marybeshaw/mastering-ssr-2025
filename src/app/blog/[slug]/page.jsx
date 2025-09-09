@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import { getPosts, getPost } from '../../../lib/posts';
 
@@ -33,3 +34,9 @@ export default async function BlogPostPage({ params }) {
     </main>
   );
 }
+
+BlogPostPage.propTypes = {
+  params: PropTypes.shape({
+    slug: PropTypes.string.isRequired,
+  }).isRequired,
+};

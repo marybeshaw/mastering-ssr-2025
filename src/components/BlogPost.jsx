@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import PropTypes from "prop-types";
 import IndicatorIcon from "./IndicatorIcon";
 import React from "react";
 import LikesButton from "./LikesButton";
@@ -23,3 +24,11 @@ export default function BlogPost({ post}) {
     </article>
   );
 }
+
+BlogPost.propTypes = {
+  post: PropTypes.shape({
+    slug: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    excerpt: PropTypes.string.isRequired,
+  }).isRequired,
+};
