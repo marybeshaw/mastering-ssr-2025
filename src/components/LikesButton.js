@@ -1,11 +1,11 @@
-"use client";
+"use client"; // <-- This means "Hybrid!" - Runs on server & client
 
 import React, { useState, useEffect, useOptimistic, startTransition } from "react";
 import IndicatorIcon from "./IndicatorIcon";
 import PropTypes from "prop-types";
 
 // Define the component type for this component - only for display purposes
-const COMPONENT_TYPE = "client";
+const COMPONENT_TYPE = "hybrid";
 
 export default function LikesButton ({ postId }) {
   const [likes, setLikes] = useState(0);

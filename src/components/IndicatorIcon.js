@@ -3,15 +3,15 @@ import PropTypes from "prop-types";
 
 const ICONS = {
   
-  // Client components are marked "use client" at the top of the page and only render on the client
-  client: { letter: "C", color: "#2196f3" },
+  // Client components are marked "use client" at the top of the page and render on the server AND the client
+  hybrid: { letter: "H", color: "#2196f3" },
   
-  // React server components are actually hybrid by default, in that they render both on server and client
-  hybrid: { letter: "H", color: "#43a047" },
+  // React server components are all on the server
+  server: { letter: "S", color: "#43a047" },
 };
 
 const IndicatorIcon = ({ type, name, size = 24, className = "" }) => {
-  const icon = ICONS[type] || ICONS.hybrid;
+  const icon = ICONS[type] || ICONS.server;
   return (
     <span
       className={`indicator-icon ${className}`}
@@ -42,7 +42,7 @@ const IndicatorIcon = ({ type, name, size = 24, className = "" }) => {
 };
 
 IndicatorIcon.propTypes = {
-  type: PropTypes.oneOf(["client", "hybrid"]).isRequired,
+  type: PropTypes.oneOf(["client", "server"]).isRequired,
   name: PropTypes.string.isRequired,
   size: PropTypes.number,
   className: PropTypes.string,

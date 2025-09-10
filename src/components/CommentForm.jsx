@@ -1,11 +1,11 @@
-'use client';
+'use client'; // <-- This means "Hybrid!" - Runs on server & client
 
 import React, { useActionState, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { addCommentAction } from '../actions/commentActions';
 import IndicatorIcon from './IndicatorIcon';
 
-const COMPONENT_TYPE = 'client';
+const COMPONENT_TYPE = 'hybrid';
 
 export default function CommentForm({ postId }) {
   const [author, setAuthor] = useState('');

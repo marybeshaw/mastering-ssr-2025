@@ -29,20 +29,20 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <div className="legend">
-          <span className="legend-item client">
-            <span className="legend-label">Client-only</span>
+          <span className="legend-item server">
+            <span className="legend-label">Server Only</span>
             <IndicatorIcon
-              type="client"
-              name="Client"
+              type="server"
+              name="Server Only"
               size={18}
               className="legend-icon"
             />
           </span>
           <span className="legend-item hybrid">
-            <span className="legend-label">Server And Client</span>
+            <span className="legend-label">Hybrid (Server and Client) "use client";</span>
             <IndicatorIcon
               type="hybrid"
-              name="Server And Client"
+              name="Hybrid (Server and Client)"
               size={18}
               className="legend-icon"
             />

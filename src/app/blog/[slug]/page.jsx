@@ -6,7 +6,7 @@ import { getPosts, getPost } from '../../../lib/posts';
 import IndicatorIcon from "../../../components/IndicatorIcon";
 import BlogPost from "../../../components/BlogPost";
 
-const COMPONENT_TYPE = 'hybrid';
+const COMPONENT_TYPE = 'server';
 
 // This tells Next.js which routes to pre-build at build time
 export async function generateStaticParams() {

@@ -4,7 +4,7 @@ import IndicatorIcon from './IndicatorIcon';
 import CommentForm from './CommentForm';
 import { getComments } from '../lib/comments';
 
-const COMPONENT_TYPE = 'hybrid';
+const COMPONENT_TYPE = 'server';
 
 export default async function CommentList({ postId }) {
   const comments = await getComments(postId);

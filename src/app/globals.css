@@ -39,7 +39,7 @@ main {
     box-shadow: 0 1px 4px rgba(0,0,0,0.04);
     min-width: 160px;
 }
-.client {
+.hybrid {
     background: #eaf6ff;
     color: #222;
     border: 1px dotted #2196f3;
@@ -47,7 +47,7 @@ main {
     padding: 8px;
     border-radius: 8px;
 }
-.hybrid {
+.server {
     background: #eafbe7;
     color: #222;
     border: 1px dotted #43a047;

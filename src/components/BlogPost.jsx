@@ -5,7 +5,7 @@ import React from "react";
 import LikesButton from "./LikesButton";
 import CommentList from "./CommentList";
 
-const COMPONENT_TYPE = "hybrid";
+const COMPONENT_TYPE = "server";
 
 export default function BlogPost({ post}) {
   return (
