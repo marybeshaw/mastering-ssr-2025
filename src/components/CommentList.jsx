@@ -8,6 +8,8 @@ const COMPONENT_TYPE = 'server';
 
 export default async function CommentList({ postId }) {
   const comments = await getComments(postId);
+
+  console.log(`CommentList logs to the Terminal Only! ${postId}, ${comments.length} comments.`);
   return (
     <div className={COMPONENT_TYPE}>
       <IndicatorIcon type={COMPONENT_TYPE} name="CommentList" />

@@ -1,4 +1,4 @@
-'use server';
+'use server'; // use server works on server functions/action files, not components
 
 import { addComment } from '../lib/comments';
 import { revalidatePath } from 'next/cache';
@@ -7,6 +7,10 @@ export async function addCommentAction(prevState, formData) {
   const postId = formData.get('postId');
   const author = formData.get('author');
   const commentText = formData.get('commentText');
+
+  // You will not see this in the browser console - 
+  // it's logged on the server!! Look in your terminal.
+  console.log('addCommentAction logs to the Terminal Only! ', { postId, author, commentText });
 
   if (!author || !commentText) {
     return {
@@ -17,7 +21,12 @@ export async function addCommentAction(prevState, formData) {
 
   try {
     await addComment(postId, { author, commentText });
+
+    // This is the only next.js-specific part of this file - everything else is general React
+    // revalidatePath updates the UI after the action completes.
     revalidatePath(`/blog/${postId}`);
+
+    // Note: You can return whatever you want from an action - it will be available in the state object in the component using the hook
     return {
       status: 'completed',
       message: 'Comment added successfully'
@@ -25,7 +34,8 @@ export async function addCommentAction(prevState, formData) {
   } catch (error) {
     return {
       status: 'error',
-      message: 'Error adding comment'
+      message: 'Error adding comment',
+      error
     };
   }
 }

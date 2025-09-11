@@ -1,0 +1,7 @@
+{
+    "editor.fontSize": 24,
+    "editor.formatOnSave": true,
+    "editor.cursorStyle": "block",
+    "demoTime.defaultFileType": "json",
+    "demoTime.timer": 0
+}

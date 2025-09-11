@@ -1,5 +1,12 @@
 "use client"; // <-- This means "Hybrid!" - Runs on server & client
 
+/*
+  This component does not generate hydration errors. If you try to add features and run into hydration errors, 
+  see React & Next docs for details & mitigation.
+  https://nextjs.org/docs/messages/react-hydration-error
+  https://react.dev/reference/react-dom/client/hydrateRoot
+*/
+
 import React, { useState, useEffect, useOptimistic, startTransition } from "react";
 import IndicatorIcon from "./IndicatorIcon";
 import PropTypes from "prop-types";
@@ -7,22 +14,25 @@ import PropTypes from "prop-types";
 // Define the component type for this component - only for display purposes
 const COMPONENT_TYPE = "hybrid";
 
-export default function LikesButton ({ postId }) {
+export default function LikesButton({ postId }) {
   const [likes, setLikes] = useState(0);
-  
+
+  console.log(`LikesButton logs to BOTH Terminal & Browser Console! ${postId}, ${likes}`);
+
   // Status is useful waiting for the initial fetch, but once we click the button,
   // useOptimistic makes the status display not necessary because the UI updates immediately.
   const [status, setStatus] = useState("loading");
-  
+
   // Fetch initial likes with a cleanup function
   useEffect(() => {
     const controller = new AbortController();
-    
+
     async function fetchLikes() {
       setStatus("loading");
       try {
         // Here we make an API call and don't use a server action - to show the difference between an API call and
         // a server action (see CommentForm.jsx to see a server action example).
+        // See /api/likes/[postId]/route.js for the API route code.
         const res = await fetch(`/api/likes/${postId}`, { signal: controller.signal });
         const data = await res.json();
         setLikes(data.likes);
@@ -37,9 +47,9 @@ export default function LikesButton ({ postId }) {
         setStatus("error");
       }
     }
-    
+
     fetchLikes();
-    
+
     // --- This is the cleanup function ---
     // It's returned from the effect and runs when the component unmounts
     // or before the effect runs again if the `postId` changes.
@@ -54,12 +64,13 @@ export default function LikesButton ({ postId }) {
     likes,
     (currentLikes) => currentLikes + 1
   );
-  
+
   // Handle the like button click with optimistic UI update
-  async function handleLike (){
+  async function handleLike() {
     startTransition(() => {
       addOptimisticLike();
     });
+
     try {
       const res = await fetch(`/api/likes/${postId}`, { method: "POST" });
       const data = await res.json();
@@ -69,7 +80,7 @@ export default function LikesButton ({ postId }) {
       // React reverts the optimistic state automatically on its own in an error situation
     }
   }
-  
+
   const buttonText =
     status === "loading" ? "Loading..." :
       status === "error" ? "Error" :
@@ -87,5 +98,5 @@ export default function LikesButton ({ postId }) {
 }
 
 LikesButton.propTypes = {
-  postId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  postId: PropTypes.string.isRequired,
 };

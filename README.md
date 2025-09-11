@@ -5,7 +5,21 @@ This is a demo application for Mary Shaw's conference presentation, "Mastering S
 - **UtahJS Conf 2025** - September 12, 2025
 - **International JavaScript Conference** - September 30, 2025
 
-This [Next.js](https://nextjs.org) project demonstrates the differences between server-side and client-side components in React 19, as well as different patterns for handling user interactions.
+This [Next.js](https://nextjs.org) project is a **simple blog post application** that demonstrates the differences between server-side and client-side components in React 19, as well as different patterns for handling user interactions. The app was deliberately kept simple to showcase specific React Server Component behaviors and console.log patterns.
+
+> 🎯 **New!** This repository includes an **[Interactive Code Tour](#interactive-code-tour)** that provides step-by-step guided explanations of all the concepts demonstrated in the presentation. Perfect for following along during the talk or reviewing the material afterward!
+
+> 🚀 **Pro Tip:** For the best experience, **[run the app locally](#getting-started)** while taking the code tour! You'll be able to see the console.log behavior, test the interactive features, and observe the differences between server and client components in real-time.
+
+## App Overview
+
+This demo app is a **simple blog post application** featuring:
+
+- **Blog Post Display** - Shows blog post content using server-side rendering
+- **Like Button** - Increment likes on posts (demonstrates optimistic UI patterns)  
+- **Comment System** - Add and display comments (demonstrates Server Actions)
+
+The application was intentionally kept simple to focus on demonstrating specific server-side rendering concepts and console.log behaviors in different component types.
 
 ## Visual Component Indicators
 
@@ -40,6 +54,38 @@ This app demonstrates two different patterns for handling user interactions:
 - **Data Library**: `src/lib/comments.js`
 - **Data Storage**: `data/comments.json`
 - **Behavior**: Uses React Server Actions for form submission, automatically revalidates page data
+
+## Interactive Code Tour
+
+This repository includes an interactive CodeTour that guides you through the key concepts demonstrated in the presentation. The tour provides step-by-step explanations of server components, client components, and hybrid patterns.
+
+### Installing the CodeTour Extension
+
+1. **In VS Code**: Open the Extensions panel (`Cmd+Shift+X` on Mac, `Ctrl+Shift+X` on Windows/Linux)
+2. **Search for**: "CodeTour" by vsls-contrib
+3. **Install** the extension
+4. **Reload** VS Code if prompted
+
+### Running the Tour
+
+1. **Open the Command Palette**: `Cmd+Shift+P` (Mac) or `Ctrl+Shift+P` (Windows/Linux)
+2. **Type**: "CodeTour: Start Tour"
+3. **Select**: "SSR Components Deep Dive" from the list
+4. **Follow along**: Use the navigation controls to step through each explanation
+
+The tour covers:
+- **Server Components** (CommentList) - Pure server-side rendering
+- **Client Components** (LikesButton) - Hybrid rendering with optimistic UI
+- **Server Actions** (CommentForm) - Direct server-client integration
+- **Console.log behavior** - Where logs appear in different component types
+- **Modern React patterns** - useOptimistic, useActionState, and revalidatePath
+
+### Tour Benefits
+
+- **Self-paced learning** - Go through the concepts at your own speed
+- **Code context** - See explanations directly alongside the relevant code
+- **Presentation companion** - Perfect for following along during the talk
+- **Reference material** - Come back to review concepts anytime
 
 ## Getting Started
 

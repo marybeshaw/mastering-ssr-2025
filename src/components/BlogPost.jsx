@@ -7,11 +7,14 @@ import CommentList from "./CommentList";
 
 const COMPONENT_TYPE = "server";
 
-export default function BlogPost({ post}) {
+export default function BlogPost({ post }) {
+
+  console.log(`BlogPost logs to the Terminal Only! ${post.slug}`);
+
   return (
     <article className={COMPONENT_TYPE}>
       <IndicatorIcon type={COMPONENT_TYPE} name="BlogPostPage" />
-          
+
       <h2>
         <Link href={`/blog/${post.slug}`} style={{ color: '#0070f3' }}>
           {post.title}

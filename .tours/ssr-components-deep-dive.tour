@@ -1,0 +1,175 @@
+{
+    "$schema": "https://aka.ms/codetour-schema",
+    "title": "SSR Components Deep Dive",
+    "description": "A guided tour exploring server-side rendering, client components, and hybrid behavior in React",
+    "steps": [
+        {
+            "title": "Welcome to Mastering Server-Side Development for React Developers",
+            "description": "This tour will guide you through the key concepts of server-side rendering, client components, and how console.log behaves differently in server vs client contexts. \n\nWe'll explore server components, client components, and hybrid patterns to help you understand the server-client interaction and build seamless user experiences. \n\nYou'll see how React Server Components integrate with traditional client-side React patterns."
+        },
+        {
+            "title": "Three Types of Components in React",
+            "description": "In this demo, you'll see three types of components:\n\n1. **Server Components** - Run only on the server (no 'use client')\n\n2. **Client Components** - Run on both server and client ('use client')\n\n3. **Hybrid Patterns** - Client components also run on the server. Some use Server Actions.\n\nEach has different console.log behavior and capabilities. Let's explore each type!"
+        },
+        {
+            "title": "About This Demo App",
+            "description": "This is a **simple blog post application** that displays blog posts and includes two key interactive features:\n\n• **Like Button** - Increment likes on posts (demonstrates optimistic UI)\n\n• **Comment System** - Add comments to posts (demonstrates Server Actions)\n\nThe app was deliberately kept simple to showcase specific React Server Component behaviors and patterns. You'll see how different approaches to user interaction work in a server-side rendering context."
+        },
+        {
+            "title": "CommentList Component - Pure Server Component",
+            "description": "Let's start with **CommentList** - a pure server component that displays all comments for a blog post. \n\nThis component demonstrates true server-side rendering with no client-side JavaScript needed."
+        },
+        {
+            "file": "src/components/CommentList.jsx",
+            "line": 9,
+            "title": "Pure Server Component",
+            "description": "We start with CommentList - a pure server component. \n\nNotice there's NO 'use client' directive. \n\nIt's async and can directly call server-side functions like getComments(). \n\nServer components run exclusively on the server during rendering."
+        },
+        {
+            "file": "src/components/CommentList.jsx",
+            "line": 12,
+            "title": "Server-Only Console Logs",
+            "description": "This console.log will ONLY appear in your terminal, never in the browser console. \n\nIt logs after all comments have been loaded on the server. \n\nWatch your terminal when you reload the page - this demonstrates true server-side execution! \n\n(Note: Locally, dev tools may show server logs in your browser with a tag 'server')"
+        },
+        {
+            "file": "src/components/CommentList.jsx",
+            "line": 15,
+            "title": "Visual Component Indicator",
+            "description": "Notice the IndicatorIcon component! \n\nThis creates a visual indicator in the UI that shows what type of component you're looking at. \n\nYou'll see either an 'S' (Server) or 'H' (Hybrid/Client). \n\nHover over each indicator icon in the browser to find out what type of component it is and whether it runs on the server, client, or both."
+        },
+        {
+            "title": "LikesButton Component - Hybrid Client Component",
+            "description": "Now let's examine **LikesButton** - a hybrid client component that demonstrates optimistic UI updates. \n\n\n\nThis component shows how to create instant, responsive interactions while maintaining server-side data integrity."
+        },
+        {
+            "file": "src/components/LikesButton.js",
+            "line": 1,
+            "title": "Hybrid Client Component",
+            "description": "The 'use client' directive tells React this component needs client-side features because it handles user clicks and manages its own state. \n\n\n\nHowever, it can still be server-side rendered initially - hence 'hybrid' behavior."
+        },
+        {
+            "file": "src/components/LikesButton.js",
+            "line": 18,
+            "title": "Familiar React Hooks",
+            "description": "We start with familiar hooks. 'useState' holds the 'real' number of likes that we get from the server. \n\nNote that useState starts with 0 on both server and client initially. \n\nThe client/browser will make the API call and state updates in the browser, but never on the server. \n\nThis console.log appears in BOTH the terminal (during SSR) AND the browser console (during hydration/client updates)."
+        },
+        {
+            "file": "src/components/LikesButton.js",
+            "line": 27,
+            "title": "Classic Client-Side Data Fetching",
+            "description": "In 'useEffect', we do a standard client-side data fetch to get the initial like count. \n\n\n\nThis is a classic pattern: fetch data from an API endpoint when the component mounts. \n\nMost React developers will recognize this approach."
+        },
+        {
+            "file": "src/components/LikesButton.js",
+            "line": 63,
+            "title": "useOptimistic - The Magic Begins",
+            "description": "Now for the magic! \n\n\n\n'useOptimistic' lets us create a *temporary* state that we can show to the user instantly. \n\nWe give it the 'real' likes state, and a function that defines how to change it (in this case, just add 1)."
+        },
+        {
+            "file": "src/components/LikesButton.js",
+            "line": 71,
+            "title": "Instant UI Updates with startTransition",
+            "description": "When the user clicks, we immediately call 'addOptimisticLike' inside 'startTransition'. \n\n\n\nThis updates the UI right away, making the app feel incredibly fast - before any server request happens!"
+        },
+        {
+            "file": "src/components/LikesButton.js",
+            "line": 75,
+            "title": "The Pessimistic Part - Real Server Request",
+            "description": "AFTER we've updated the UI optimistically, we send the real request to the server. \n\n\n\nThis is the 'pessimistic' part - we handle the actual server-side logic while the user already sees the updated UI."
+        },
+        {
+            "file": "src/components/LikesButton.js",
+            "line": 81,
+            "title": "Automatic Error Recovery",
+            "description": "Here's the best part: if the API call fails, React automatically throws away the optimistic update and reverts the UI back to the last known 'real' state. \n\n\n\nNo manual error handling for the UI is needed!"
+        },
+        {
+            "file": "src/components/LikesButton.js",
+            "line": 87,
+            "title": "Displaying Optimistic State",
+            "description": "Finally, we display the 'optimisticLikes' value in our button. \n\nThe user sees the number go up instantly, long before the server has actually responded. \n\n\n\nThis creates an incredibly responsive user experience."
+        },
+        {
+            "title": "CommentForm Component - Server Actions Pattern",
+            "description": "Next, let's explore **CommentForm** - a client component that uses Server Actions instead of traditional API calls. \n\n\n\nThis demonstrates the modern approach to form handling with direct server-client integration."
+        },
+        {
+            "file": "src/components/CommentForm.jsx",
+            "line": 1,
+            "title": "Client Component for Form State Management",
+            "description": "CommentForm uses 'use client' because it needs to be a client component - it uses state for the input fields and handles form interactions. \n\n\n\nDespite being a client component, it uses Server Actions instead of API calls."
+        },
+        {
+            "file": "src/components/CommentForm.jsx",
+            "line": 18,
+            "title": "Standard React Hooks for Form Control",
+            "description": "We still use standard React hooks like 'useState' to manage the form inputs for a controlled component. \n\n\n\nYou could use a reducer for a more complex form, but this demonstrates the familiar React patterns."
+        },
+        {
+            "file": "src/components/CommentForm.jsx",
+            "line": 23,
+            "title": "useActionState - Server Actions Magic",
+            "description": "This is the first key piece of React Server Actions magic: the 'useActionState' hook. \n\nIt binds our form to a Server Action and gives us back a state object to track its progress and a formAction to connect to our form."
+        },
+        {
+            "file": "src/components/CommentForm.jsx",
+            "line": 27,
+            "title": "Reacting to Server Action State",
+            "description": "Because we get a 'state' object back from useActionState, we can react to changes. \n\n\n\nHere, we're clearing the form after a successful submission by watching for state.status === 'completed'."
+        },
+        {
+            "file": "src/components/CommentForm.jsx",
+            "line": 40,
+            "title": "Form Action - Direct Server Connection",
+            "description": "Here's the most important part! \n\nLook at the form's 'action' prop. \n\nWe are NOT calling an API endpoint. \n\n\n\nWe're directly passing the 'formAction' we got from our hook. \n\nThis is what connects the form to our server-side logic."
+        },
+        {
+            "file": "src/components/CommentForm.jsx",
+            "line": 69,
+            "title": "Server Action State for UI Feedback",
+            "description": "The 'state' object from 'useActionState' makes it trivial to display status messages, like errors, directly in our UI. \n\n\n\nNo separate error handling or loading states needed - it's all built into the Server Action pattern."
+        },
+        {
+            "title": "Server Actions File - Pure Server-Side Logic",
+            "description": "Now let's dive into **commentActions.js** - where the actual server-side work happens. \n\n\n\nThis file contains the Server Action function that processes form submissions and demonstrates pure server-side execution."
+        },
+        {
+            "file": "src/actions/commentActions.js",
+            "line": 1,
+            "title": "Server Actions - 'use server' Directive",
+            "description": "This file starts with 'use server' - the opposite of 'use client'. \n\nEverything here runs exclusively on the server. \n\n\n\nThis is where you put validation, database operations, and sensitive logic."
+        },
+        {
+            "file": "src/actions/commentActions.js",
+            "line": 13,
+            "title": "Server Action Console Logs",
+            "description": "This console.log will ONLY appear in your terminal - not the browser - when you submit a comment. \n\n\n\nPerfect for logging sensitive operations or debug info you don't want users to see. \n\nTry submitting a comment and watch your terminal!"
+        },
+        {
+            "file": "src/actions/commentActions.js",
+            "line": 27,
+            "title": "revalidatePath - Seamless UI Updates",
+            "description": "After adding a comment, we call 'revalidatePath' to refresh the blog post page. \n\n\n\nThis ensures the new comment appears immediately in the CommentList component without a full page reload - creating seamless server-client integration!"
+        },
+        {
+            "file": "src/actions/commentActions.js",
+            "line": 33,
+            "title": "Custom Server Action Return Values",
+            "description": "Server Actions can return any object. \n\nHere we return objects with 'status' and 'message' properties. \n\n\n\nThis data becomes available in the client component's state, creating a rich communication channel between server and client."
+        },
+        {
+            "title": "Back to CommentForm - Completing the Cycle",
+            "description": "Let's return to **CommentForm** to see how it uses the data returned from our Server Action, completing the full server-client communication cycle."
+        },
+        {
+            "file": "src/components/CommentForm.jsx",
+            "line": 69,
+            "title": "Complete Server-Client Cycle",
+            "description": "Back in CommentForm, we use the 'state' object returned by our server action. \n\nIf state.status === 'error', we display the error message. \n\n\n\nThis completes the cycle: client form → server action → server response → client UI update. \n\n\n\nYou can choose to handle errors differently - you control the returned object structure!"
+        },
+        {
+            "title": "Key Takeaways - Three Rendering Patterns",
+            "description": "🔥 **Console Log Behavior:**\n\n• Server components: Terminal only\n\n• Client components: Both terminal AND browser\n\n• Server actions: Terminal only\n\n🚀 **Performance Patterns:**\n\n• useOptimistic: Instant UI feedback\n\n• Server Actions: No API endpoints needed\n\n• revalidatePath: Automatic cache updates\n\n💡 **The 'Server' tag in Chrome comes from Next.js dev tools, not Chrome itself!**"
+        }
+    ]
+}

@@ -1,8 +1,14 @@
 'use client'; // <-- This means "Hybrid!" - Runs on server & client
 
+/*
+If you run into hydration errors, see React & Next docs for details & mitigation
+https://nextjs.org/docs/messages/react-hydration-error
+https://react.dev/reference/react-dom/client/hydrateRoot
+ */
+
 import React, { useActionState, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { addCommentAction } from '../actions/commentActions';
+import { addCommentAction } from '../actions/commentActions'; // Our Server Action function!! Will not be bundled in client code
 import IndicatorIcon from './IndicatorIcon';
 
 const COMPONENT_TYPE = 'hybrid';
@@ -10,6 +16,8 @@ const COMPONENT_TYPE = 'hybrid';
 export default function CommentForm({ postId }) {
   const [author, setAuthor] = useState('');
   const [commentText, setCommentText] = useState('');
+
+  // State will be whatever we want - defined in the imported Action function
   const [state, formAction] = useActionState(addCommentAction, {
     message: '',
   });
@@ -22,13 +30,16 @@ export default function CommentForm({ postId }) {
     }
   }, [state.status]);
 
+  console.log(`CommentForm logs to BOTH the Terminal and the Browser Console! ${postId} author: ${author}, commentText: ${commentText}, server-action state: ${JSON.stringify(state)}`);
+
   return (
     <div className={COMPONENT_TYPE}>
       <IndicatorIcon type={COMPONENT_TYPE} name="CommentForm" />
       <h4>Add a Comment</h4>
+
       <form action={formAction}>
         <input type="hidden" name="postId" value={postId} />
-        
+
         <div className="form-field">
           <label htmlFor="author">Your Name</label>
           <input

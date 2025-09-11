@@ -9,7 +9,7 @@
       "author": "Fullstack Frank",
       "commentText": "I appreciate the practical examples provided here. It really helps to see how these concepts can be applied in real-world scenarios.",
       "timestamp": "2025-09-07T20:30:00.000Z"
-    },
+    }
   },
   "interactive-features": {
     "d4c3b2a1-f6e5-4f7e-8d9c-2e1f2a3b4c5d": {
@@ -21,6 +21,6 @@
       "author": "Frontend Frida",
       "commentText": "Love seeing practical examples like this. It really helps to understand when to choose one pattern over the other.",
       "timestamp": "2025-09-07T21:20:00.000Z"
-    },
+    }
   }
 }
