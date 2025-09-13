@@ -1,16 +1,16 @@
 'use server'; // use server works on server functions/action files, not components
 
 import { addComment } from '../lib/comments';
-import { revalidatePath } from 'next/cache';
+import { revalidatePath } from 'next/cache';  // The only next-js-specific code in the demo files
 
+// Server action!! Returns state for the useActionState hook!
 export async function addCommentAction(prevState, formData) {
   const postId = formData.get('postId');
   const author = formData.get('author');
   const commentText = formData.get('commentText');
-
   // You will not see this in the browser console - 
-  // it's logged on the server!! Look in your terminal.
-  console.log('addCommentAction logs to the Terminal Only! ', { postId, author, commentText });
+  // it's logged on the server!! Look in your server terminal.
+  console.log('addCommentAction logs to the server terminal Only! ', { postId, author, commentText });
 
   if (!author || !commentText) {
     return {

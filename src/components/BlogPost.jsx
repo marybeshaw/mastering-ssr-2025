@@ -9,7 +9,7 @@ const COMPONENT_TYPE = "server";
 
 export default function BlogPost({ post }) {
 
-  console.log(`BlogPost logs to the Terminal Only! ${post.slug}`);
+  console.log(`BlogPost logs to the server terminal Only! ${post.slug}`);
 
   return (
     <article className={COMPONENT_TYPE}>

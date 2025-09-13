@@ -17,7 +17,7 @@ const COMPONENT_TYPE = "hybrid";
 export default function LikesButton({ postId }) {
   const [likes, setLikes] = useState(0);
 
-  console.log(`LikesButton logs to BOTH Terminal & Browser Console! ${postId}, ${likes}`);
+  console.log(`LikesButton logs to BOTH server terminal & browser console! ${postId}, ${likes}`);
 
   // Status is useful waiting for the initial fetch, but once we click the button,
   // useOptimistic makes the status display not necessary because the UI updates immediately.
@@ -29,6 +29,7 @@ export default function LikesButton({ postId }) {
 
     async function fetchLikes() {
       setStatus("loading");
+      console.log("fethching likes...");
       try {
         // Here we make an API call and don't use a server action - to show the difference between an API call and
         // a server action (see CommentForm.jsx to see a server action example).
@@ -72,6 +73,7 @@ export default function LikesButton({ postId }) {
     });
 
     try {
+      console.log("submitting like...");
       const res = await fetch(`/api/likes/${postId}`, { method: "POST" });
       const data = await res.json();
       setLikes(data.likes); // Update the "real" state from the server

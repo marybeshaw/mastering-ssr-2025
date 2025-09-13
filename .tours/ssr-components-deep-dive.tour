@@ -5,15 +5,15 @@
     "steps": [
         {
             "title": "Welcome to Mastering Server-Side Development for React Developers",
-            "description": "This tour will guide you through the key concepts of server-side rendering, client components, and how console.log behaves differently in server vs client contexts. \n\nWe'll explore server components, client components, and hybrid patterns to help you understand the server-client interaction and build seamless user experiences. \n\nYou'll see how React Server Components integrate with traditional client-side React patterns."
-        },
-        {
-            "title": "Three Types of Components in React",
-            "description": "In this demo, you'll see three types of components:\n\n1. **Server Components** - Run only on the server (no 'use client')\n\n2. **Client Components** - Run on both server and client ('use client')\n\n3. **Hybrid Patterns** - Client components also run on the server. Some use Server Actions.\n\nEach has different console.log behavior and capabilities. Let's explore each type!"
+            "description": "This tour will guide you through the key concepts of server-side rendering, client components, and how console.log behaves differently in server vs client contexts. \n\nWe'll explore:\n\n• server components\n\n• hybrid (client & server) components with 'use client'\n\n• server actions\n\nto help you understand the server-client interaction and build seamless user experiences. \n\nYou'll see how React Server Components integrate with traditional client-side React patterns."
         },
         {
             "title": "About This Demo App",
-            "description": "This is a **simple blog post application** that displays blog posts and includes two key interactive features:\n\n• **Like Button** - Increment likes on posts (demonstrates optimistic UI)\n\n• **Comment System** - Add comments to posts (demonstrates Server Actions)\n\nThe app was deliberately kept simple to showcase specific React Server Component behaviors and patterns. You'll see how different approaches to user interaction work in a server-side rendering context."
+            "description": "This is a **simple blog post application** that displays blog posts and includes two key interactive features:\n\n• **Blog Posts** - List posts (demonstrates server components)\n\n• **Comment System** - Add comments to posts (demonstrates Server Actions)\n\n• **Like Button** - Increment likes on posts (demonstrates optimistic UI)\n\nThe app was deliberately kept simple to showcase specific React Server Component behaviors and patterns. You'll see how different approaches to user interaction work in a server-side rendering context."
+        },
+        {
+            "title": "Two Types of Components in React",
+            "description": "In this demo, you'll see 2 types of components:\n\n1. **Server Components** - Run only on the server (no 'use client')\n\n2. **Hybrid/Client Components** - Run on both server and client ('use client')\n\nEach has different behavior and capabilities. \n\n            (Note: Locally, dev tools may show server logs in your browser with a tag 'server')\n\n            Let's explore each type!"
         },
         {
             "title": "CommentList Component - Pure Server Component",
@@ -29,7 +29,7 @@
             "file": "src/components/CommentList.jsx",
             "line": 12,
             "title": "Server-Only Console Logs",
-            "description": "This console.log will ONLY appear in your terminal, never in the browser console. \n\nIt logs after all comments have been loaded on the server. \n\nWatch your terminal when you reload the page - this demonstrates true server-side execution! \n\n(Note: Locally, dev tools may show server logs in your browser with a tag 'server')"
+            "description": "This console.log will ONLY appear in your server terminal, never in the browser console. \n\nIt logs after all comments have been fetched (see `await` above). \n\nWatch your server terminal when you reload the page - this demonstrates true server-side execution! \n\n(Note: Locally, dev tools may show server logs in your browser with a tag 'server')"
         },
         {
             "file": "src/components/CommentList.jsx",
@@ -51,7 +51,7 @@
             "file": "src/components/LikesButton.js",
             "line": 18,
             "title": "Familiar React Hooks",
-            "description": "We start with familiar hooks. 'useState' holds the 'real' number of likes that we get from the server. \n\nNote that useState starts with 0 on both server and client initially. \n\nThe client/browser will make the API call and state updates in the browser, but never on the server. \n\nThis console.log appears in BOTH the terminal (during SSR) AND the browser console (during hydration/client updates)."
+            "description": "We start with familiar hooks. 'useState' holds the 'real' number of likes that we get from the server. \n\nNote that useState starts with 0 on both server and client initially. \n\nThe client/browser will make the API call and state updates in the browser, but never on the server. \n\nThis console.log appears in BOTH the server terminal (during SSR) AND the browser console (during hydration/client updates)."
         },
         {
             "file": "src/components/LikesButton.js",
@@ -143,7 +143,7 @@
             "file": "src/actions/commentActions.js",
             "line": 13,
             "title": "Server Action Console Logs",
-            "description": "This console.log will ONLY appear in your terminal - not the browser - when you submit a comment. \n\n\n\nPerfect for logging sensitive operations or debug info you don't want users to see. \n\nTry submitting a comment and watch your terminal!"
+            "description": "This console.log will ONLY appear in your server terminal - not the browser - when you submit a comment. \n\n\n\nPerfect for logging sensitive operations or debug info you don't want users to see. \n\nTry submitting a comment and watch your server terminal!"
         },
         {
             "file": "src/actions/commentActions.js",
@@ -169,7 +169,7 @@
         },
         {
             "title": "Key Takeaways - Three Rendering Patterns",
-            "description": "🔥 **Console Log Behavior:**\n\n• Server components: Terminal only\n\n• Client components: Both terminal AND browser\n\n• Server actions: Terminal only\n\n🚀 **Performance Patterns:**\n\n• useOptimistic: Instant UI feedback\n\n• Server Actions: No API endpoints needed\n\n• revalidatePath: Automatic cache updates\n\n💡 **The 'Server' tag in Chrome comes from Next.js dev tools, not Chrome itself!**"
+            "description": "🔥 **Console Log Behavior:**\n\n• Server components: Server terminal only\n\n• Client components: Both server terminal AND browser\n\n• Server actions: Server terminal only\n\n🚀 **Performance Patterns:**\n\n• useOptimistic: Instant UI feedback\n\n• Server Actions: No API endpoints needed\n\n• revalidatePath: Automatic cache updates\n\n💡 **The 'Server' tag in Chrome comes from Next.js dev tools, not Chrome itself!**"
         }
     ]
 }

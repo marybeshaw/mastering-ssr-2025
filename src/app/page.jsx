@@ -9,7 +9,7 @@ const COMPONENT_TYPE = "server";
 export default async function HomePage() {
   const posts = await getPosts();
 
-  console.log(`HomePage logs to the Terminal Only! ${posts.length} posts.`);
+  console.log(`HomePage logs to the server terminal Only! ${posts.length} posts.`);
 
   return (
     <main>

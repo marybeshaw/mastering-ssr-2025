@@ -6,6 +6,7 @@ const commentsFilePath = path.join(process.cwd(), 'data', 'comments.json');
 export async function getComments(postId) {
   try {
     const data = await fs.readFile(commentsFilePath, 'utf-8');
+    console.log('Read comments from file.');
     const comments = JSON.parse(data);
     const postComments = comments[postId] || {};
     // Convert object of comments to array with comment IDs
@@ -35,6 +36,7 @@ export async function addComment(postId, comment) {
       timestamp: new Date().toISOString()
     };
     await fs.writeFile(commentsFilePath, JSON.stringify(comments, null, 2));
+    console.log('Added comment and saved to file.');
   } catch (error) {
     if (error.code === 'ENOENT') {
       // If file doesn't exist, create it

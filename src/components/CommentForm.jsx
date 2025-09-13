@@ -1,5 +1,4 @@
 'use client'; // <-- This means "Hybrid!" - Runs on server & client
-
 /*
 If you run into hydration errors, see React & Next docs for details & mitigation
 https://nextjs.org/docs/messages/react-hydration-error
@@ -30,7 +29,7 @@ export default function CommentForm({ postId }) {
     }
   }, [state.status]);
 
-  console.log(`CommentForm logs to BOTH the Terminal and the Browser Console! ${postId} author: ${author}, commentText: ${commentText}, server-action state: ${JSON.stringify(state)}`);
+  console.log(`CommentForm logs to BOTH the server terminal and the browser console! ${postId} author: ${author}, commentText: ${commentText}, server-action state: ${JSON.stringify(state)}`);
 
   return (
     <div className={COMPONENT_TYPE}>

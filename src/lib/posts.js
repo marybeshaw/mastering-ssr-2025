@@ -9,6 +9,7 @@ const postsFilePath = path.join(process.cwd(), 'data/posts.json');
 export async function getPosts() {
   try {
     const data = await fs.readFile(postsFilePath, 'utf-8');
+    console.log('Reading posts from file.');
     return JSON.parse(data);
   } catch (error) {
     console.error("Could not read posts.json:", error);
@@ -19,5 +20,6 @@ export async function getPosts() {
 // Function to get a single post by its slug
 export async function getPost(slug) {
   const posts = await getPosts();
+  console.log('Finding post with slug:', slug);
   return posts.find((post) => post.slug === slug);
 }
