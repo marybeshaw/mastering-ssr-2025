@@ -7,9 +7,9 @@ This is a demo application for Mary Shaw's conference presentation, "Mastering S
 
 This [Next.js](https://nextjs.org) project is a **simple blog post application** that demonstrates the differences between server-side and client-side components in React 19, as well as different patterns for handling user interactions. The app was deliberately kept simple to showcase specific React Server Component behaviors and console.log patterns.
 
-> 🎯 **New!** This repository includes an **[Interactive Code Tour](#interactive-code-tour)** that provides step-by-step guided explanations of all the concepts demonstrated in the presentation. Perfect for following along during the talk or reviewing the material afterward!
+ 🎯 **New!** This repository includes an **[Interactive Code Tour](#interactive-code-tour)** that provides step-by-step guided explanations of all the concepts demonstrated in the presentation. Perfect for following along during the talk or reviewing the material afterward!
 
-> 🚀 **Pro Tip:** For the best experience, **[run the app locally](#getting-started)** while taking the code tour! You'll be able to see the console.log behavior, test the interactive features, and observe the differences between server and client components in real-time.
+ 🚀 **Pro Tip:** For the best experience, **[run the app locally](#getting-started)** while taking the code tour! You'll be able to see the console.log behavior, test the interactive features, and observe the differences between server and client components in real-time.
 
 ## App Overview
 
@@ -117,9 +117,4 @@ To learn more about Next.js and React Server Components:
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API
 - [React Server Components](https://react.dev/reference/rsc/server-components) - official React documentation
 - [Server Actions](https://nextjs.org/docs/app/building-your-application/data-fetching/server-actions) - Next.js server actions guide
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [Optimistic UI in React](https://react.dev/learn/optimistic-ui) - React documentation on optimistic UI patterns
