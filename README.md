@@ -25,7 +25,7 @@ The application was intentionally kept simple to focus on demonstrating specific
 
 This app includes special visual indicators to help distinguish between different component types:
 
-- **Client Components** (`"use client"`): Light blue background with a "C" icon in the upper-right corner
+- **Hybrid Components** (`"use client"` renders on both server & client): Light blue background with an "H" icon in the upper-right corner
 - **Server Components** (default React 19 components): Light green background with an "S" icon in the upper-right corner
 
 ## Demo Features
@@ -45,7 +45,7 @@ This app demonstrates two different patterns for handling user interactions:
 - **Data Storage**: `data/likes.json`
 - **Behavior**: Fetches current likes on mount, sends POST request to increment likes
 
-#### 2. CommentForm - Server Action Pattern  
+#### 2. CommentForm with CommentList - Server Action Pattern  
 - **Form Component**: `src/components/CommentForm.jsx` (client component)
 - **List Component**: `src/components/CommentList.jsx` (server component)
 - **Type**: Client component (form) + Server component (list)
