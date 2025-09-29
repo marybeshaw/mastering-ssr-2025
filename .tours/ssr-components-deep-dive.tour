@@ -5,7 +5,7 @@
     "steps": [
         {
             "title": "Welcome to Mastering Server-Side Development for React Developers",
-            "description": "This tour will guide you through the key concepts of server-side rendering, client components, and how console.log behaves differently in server vs client contexts. \n\nWe'll explore:\n\n• server components\n\n• hybrid (client & server) components with 'use client'\n\n• server actions\n\nto help you understand the server-client interaction and build seamless user experiences. \n\nYou'll see how React Server Components integrate with traditional client-side React patterns."
+            "description": "This tour will guide you through the key concepts of server-side rendering, client components, and how console.log behaves differently in server vs client contexts. \n\nWe'll explore:\n\n• server components\n\n• 'use client' hybrid (client & server) components\n\n• server actions\n\nto help you understand the server-client interaction and build seamless user experiences. \n\nYou'll see how React Server Components integrate with traditional client-side React patterns."
         },
         {
             "title": "About This Demo App",
@@ -35,7 +35,7 @@
             "file": "src/components/CommentList.jsx",
             "line": 15,
             "title": "Visual Component Indicator",
-            "description": "Notice the IndicatorIcon component! \n\nThis creates a visual indicator in the UI that shows what type of component you're looking at. \n\nYou'll see either an 'S' (Server) or 'H' (Hybrid/Client). \n\nHover over each indicator icon in the browser to find out what type of component it is and whether it runs on the server, client, or both."
+            "description": "Notice the IndicatorIcon component! \n\nThis component is specific to this demo app.  It creates a visual indicator in the UI showing what type of component you're looking at. \n\nYou'll see either an 'S' (Server) or 'H' (Hybrid/Client). \n\nHover over each indicator icon in the browser to find out what type of component it is and whether it runs on the server, client, or both."
         },
         {
             "title": "LikesButton Component - Hybrid Client Component",
@@ -61,7 +61,7 @@
         },
         {
             "file": "src/components/LikesButton.js",
-            "line": 63,
+            "line": 67,
             "title": "useOptimistic - The Magic Begins",
             "description": "Now for the magic! \n\n\n\n'useOptimistic' lets us create a *temporary* state that we can show to the user instantly. \n\nWe give it the 'real' likes state, and a function that defines how to change it (in this case, just add 1)."
         },
@@ -73,9 +73,9 @@
         },
         {
             "file": "src/components/LikesButton.js",
-            "line": 75,
-            "title": "The Pessimistic Part - Real Server Request",
-            "description": "AFTER we've updated the UI optimistically, we send the real request to the server. \n\n\n\nThis is the 'pessimistic' part - we handle the actual server-side logic while the user already sees the updated UI."
+            "line": 76,
+            "title": "The Real Server Request",
+            "description": "AFTER we've updated the UI optimistically, we send the real request to the server. \n\n\n\nWe handle the actual server-side logic while the user already sees the updated UI."
         },
         {
             "file": "src/components/LikesButton.js",
@@ -85,7 +85,7 @@
         },
         {
             "file": "src/components/LikesButton.js",
-            "line": 87,
+            "line": 89,
             "title": "Displaying Optimistic State",
             "description": "Finally, we display the 'optimisticLikes' value in our button. \n\nThe user sees the number go up instantly, long before the server has actually responded. \n\n\n\nThis creates an incredibly responsive user experience."
         },

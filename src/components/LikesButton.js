@@ -29,7 +29,7 @@ export default function LikesButton({ postId }) {
 
     async function fetchLikes() {
       setStatus("loading");
-      console.log("fethching likes...");
+      console.log("fetching likes...");
       try {
         // Here we make an API call and don't use a server action - to show the difference between an API call and
         // a server action (see CommentForm.jsx to see a server action example).
@@ -68,19 +68,19 @@ export default function LikesButton({ postId }) {
 
   // Handle the like button click with optimistic UI update
   async function handleLike() {
-    startTransition(() => {
+    startTransition(async () => {
       addOptimisticLike();
+      
+      try {
+        console.log("submitting like...");
+        const res = await fetch(`/api/likes/${postId}`, { method: "POST" });
+        const data = await res.json();
+        setLikes(data.likes); // Update the "real" state from the server
+      } catch (e) {
+        console.error('Error submitting like:', e);
+        // React reverts the optimistic state automatically on its own in an error situation
+      }
     });
-
-    try {
-      console.log("submitting like...");
-      const res = await fetch(`/api/likes/${postId}`, { method: "POST" });
-      const data = await res.json();
-      setLikes(data.likes); // Update the "real" state from the server
-    } catch (e) {
-      console.error('Error submitting like:', e);
-      // React reverts the optimistic state automatically on its own in an error situation
-    }
   }
 
   const buttonText =
